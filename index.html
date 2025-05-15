@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-xl font-bold text-blue-500">Abenezer Aschalew</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home"
+                            class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-500">Home</a>
+                        <a href="#about"
+                            class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-500">About</a>
+                        <a href="#skills"
+                            class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-500">Skills</a>
+                        <a href="#projects"
+                            class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-500">Projects</a>
+                        <a href="#contact"
+                            class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-500">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-500 hover:text-blue-500 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Home</a>
+                <a href="#about"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">About</a>
+                <a href="#skills"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Skills</a>
+                <a href="#projects"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Projects</a>
+                <a href="#contact"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2 fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Hi, I'm <span
+                            class="text-blue-500">Abenezer</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-600 mb-6">Frontend Developer</h2>
+                    <p class="text-gray-600 mb-8 max-w-lg">I am a passionate Front-End Developer with a strong
+                        foundation in HTML, CSS, and JavaScript, and experience building responsive, user-friendly web
+                        interfaces. I enjoy turning design ideas into interactive, accessible, and performant websites.
+                        I am also familiar with modern frameworks like React and continuously learning to stay updated
+                        with the latest front-end trends and technologies.</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact"
+                            class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300">Contact
+                            Me</a>
+                        <a href="#projects"
+                            class="border border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition duration-300">View
+                            Work</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                        <div class="absolute inset-0 bg-blue-500 rounded-full opacity-20 transform -rotate-12"></div>
+                        <div class="absolute inset-0 bg-blue-400 rounded-full opacity-20 transform rotate-12"></div>
+                        <img src="./images/me.jpg" alt="Profile"
+                            class="relative w-full h-full rounded-full object-cover border-4 border-white shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            <div class="md:flex md:items-center md:space-x-12">
+                <div class="md:w-1/3 mb-8 md:mb-0">
+                    <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                        alt="About" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div class="md:w-2/3">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Who I Am</h3>
+                    <p class="text-gray-600 mb-6">I'm a passionate frontend developer with 1+ years of experience
+                        creating modern, responsive websites and web applications. I specialize in HTML, CSS,
+                        JavaScript, and popular frameworks like React and also basic UI/UX using Figma.</p>
+                    <p class="text-gray-600 mb-6">My approach combines technical expertise with an eye for design,
+                        ensuring that the websites I build are not only functional but also visually appealing and
+                        user-friendly.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-graduation-cap text-blue-500"></i>
+                                </div>
+                                <h4 class="font-medium text-gray-800">Education</h4>
+                            </div>
+                            <p class="text-gray-600">Bachelor's in Information Science from Haramaya University
+                                (2023-2026)</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-briefcase text-blue-500"></i>
+                                </div>
+                                <h4 class="font-medium text-gray-800">Experience</h4>
+                            </div>
+                            <p class="text-gray-600">1+ years working with startups and School</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">My Skills</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Technical Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-700">HTML/CSS</span>
+                                <span class="text-gray-600">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-700">JavaScript</span>
+                                <span class="text-gray-600">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-700">React</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-700">UI/UX</span>
+                                <span class="text-gray-600">50%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Professional Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-700">Communication</span>
+                                <span class="text-gray-600">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-700">Teamwork</span>
+                                <span class="text-gray-600">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-700">Problem Solving</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-700">Creativity</span>
+                                <span class="text-gray-600">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">My Projects</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="images/Haramaya_gate.jpg" alt="Project 1"
+                            class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-blue-500 bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
+                            <a href="https://student-registration-ashen.vercel.app/"
+                                class="text-white px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-blue-500 transition duration-300">View
+                                Details</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Simple Student Registration App</h3>
+                        <p class="text-gray-600 mb-4">A fully responsive registration platform built with React.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">React</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="./images/beachhh.jpg" alt="Project 2"
+                            class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-blue-500 bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
+                            <a href="sabana-resort.vercel.app"
+                                class="text-white px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-blue-500 transition duration-300">View
+                                Details</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Sabana Beach Resort</h3>
+                        <p class="text-gray-600 mb-4">A Simple Web App for Sabana Beach using HTML, CSS and JS</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">HTML</span>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">CSS</span>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">JS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80"
+                            alt="Project 3" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-blue-500 bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300">
+                            <a href="#"
+                                class="text-white px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-blue-500 transition duration-300">View
+                                Details</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Portfolio Website</h3>
+                        <p class="text-gray-600 mb-4">A custom portfolio website with animations and responsive design.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">HTML/CSS</span>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">GSAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-blue-500 text-white p-12">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <p class="mb-8">Feel free to reach out to me for any questions or opportunities. I'll get back
+                            to you as soon as possible.</p>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="bg-blue-400 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Email</h4>
+                                    <p>abenilee740@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-blue-400 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Phone</h4>
+                                    <p>+251944167574</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-blue-400 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Location</h4>
+                                    <p>Addis Ababa, Ethiopia</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="font-semibold mb-4">Follow Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://x.com/abenezer74807"
+                                    class="bg-blue-400 hover:bg-blue-600 text-white p-3 rounded-full transition duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/abenezer-aschalew-ab17ab261/"
+                                    class="bg-blue-400 hover:bg-blue-600 text-white p-3 rounded-full transition duration-300">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/Abenil6"
+                                    class="bg-blue-400 hover:bg-blue-600 text-white p-3 rounded-full transition duration-300">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/_whosabeni/"
+                                    class="bg-blue-400 hover:bg-blue-600 text-white p-3 rounded-full transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Send Me a Message</h3>
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                                <input type="text" id="name" name="name"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" id="email" name="email"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                                <input type="text" id="subject" name="subject"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                                <textarea id="message" name="message" rows="5"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    required></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300">Send
+                                Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="text-center md:text-left mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-white">Portfolio</a>
+                    <p class="mt-2 text-gray-400">© 2025 Abenezer Aschalew. All rights reserved.</p>
+                </div>
+                <div class="flex justify-center md:justify-end space-x-6">
+                    <a href="https://x.com/abenezer74807"
+                        class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abenezer-aschalew-ab17ab261/"
+                        class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://github.com/Abenil6" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/_whosabeni/"
+                        class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop"
+        class="fixed bottom-8 right-8 bg-blue-500 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

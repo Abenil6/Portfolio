@@ -5,17 +5,17 @@ function Skills() {
   const sectionRef = useRef(null);
 
   const technicalSkills = [
-    { name: 'HTML/CSS', percentage: 95 },
-    { name: 'JavaScript', percentage: 90 },
-    { name: 'React', percentage: 85 },
-    { name: 'UI/UX', percentage: 50 },
+    { name: 'MongoDB', percentage: 85 },
+    { name: 'Express.js', percentage: 90 },
+    { name: 'React', percentage: 90 },
+    { name: 'Node.js', percentage: 88 },
   ];
 
   const professionalSkills = [
-    { name: 'Communication', percentage: 90 },
-    { name: 'Teamwork', percentage: 95 },
-    { name: 'Problem Solving', percentage: 85 },
-    { name: 'Creativity', percentage: 80 },
+    { name: 'RESTful APIs', percentage: 90 },
+    { name: 'Git & GitHub', percentage: 85 },
+    { name: 'Problem Solving', percentage: 90 },
+    { name: 'Database Design', percentage: 85 },
   ];
 
   useEffect(() => {
@@ -64,7 +64,7 @@ function Skills() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-6">Technical Skills</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-6">MERN Stack</h3>
             <div className="space-y-6">
               {technicalSkills.map((skill) => (
                 <SkillBar key={skill.name} name={skill.name} percentage={skill.percentage} />
@@ -72,7 +72,7 @@ function Skills() {
             </div>
           </div>
           <div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-6">Professional Skills</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-6">Additional Skills</h3>
             <div className="space-y-6">
               {professionalSkills.map((skill) => (
                 <SkillBar key={skill.name} name={skill.name} percentage={skill.percentage} />

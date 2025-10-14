@@ -19,13 +19,13 @@ function About() {
           <div className="md:w-2/3">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">Who I Am</h3>
             <p className="text-gray-600 mb-6">
-              I'm a passionate frontend developer with 1+ years of experience creating modern, 
-              responsive websites and web applications. I specialize in HTML, CSS, JavaScript, 
-              and popular frameworks like React and also basic UI/UX using Figma.
+              I'm a passionate MERN Stack Developer with 2+ years of experience building full-stack 
+              web applications. I specialize in MongoDB, Express.js, React, and Node.js, along with 
+              modern tools and technologies for creating scalable and efficient solutions.
             </p>
             <p className="text-gray-600 mb-6">
-              My approach combines technical expertise with an eye for design, ensuring that 
-              the websites I build are not only functional but also visually appealing and user-friendly.
+              My approach combines strong backend development with modern frontend practices, ensuring 
+              that the applications I build are robust, secure, performant, and deliver excellent user experiences.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-gray-50 p-6 rounded-lg">
@@ -46,7 +46,7 @@ function About() {
                   </div>
                   <h4 className="font-medium text-gray-800">Experience</h4>
                 </div>
-                <p className="text-gray-600">1+ years working with startups and School Projects</p>
+                <p className="text-gray-600">2+ years building full-stack applications and working on diverse projects</p>
               </div>
             </div>
           </div>

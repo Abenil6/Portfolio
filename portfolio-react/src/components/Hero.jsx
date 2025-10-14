@@ -8,13 +8,12 @@ function Hero() {
               Hi, I'm <span className="text-blue-500">Abenezer</span>
             </h1>
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-600 mb-6">
-              Frontend Developer
+              MERN Stack Developer
             </h2>
             <p className="text-gray-600 mb-8 max-w-lg">
-              I am a passionate Front-End Developer with a strong foundation in HTML, CSS, JS and React, 
-              and experience building responsive, user-friendly web interfaces. I enjoy turning design ideas 
-              into interactive, accessible, and performant websites. I am also familiar with modern frameworks 
-              like React and continuously learning to stay updated with the latest front-end trends and technologies.
+              I am a passionate MERN Stack Developer with 2+ years of experience building full-stack web applications. 
+              I specialize in MongoDB, Express.js, React, and Node.js, creating scalable, responsive, and user-friendly 
+              solutions. I enjoy transforming ideas into robust applications with clean code and modern best practices.
             </p>
             <div className="flex space-x-4">
               <a
@@ -36,7 +35,7 @@ function Hero() {
               <div className="absolute inset-0 bg-blue-500 rounded-full opacity-20 transform -rotate-12"></div>
               <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 transform rotate-12"></div>
               <img
-                src="/images/me.jpg"
+                src="/images/me1.jpg"
                 alt="Profile"
                 className="relative w-full h-full rounded-full object-cover border-4 border-white shadow-lg"
               />

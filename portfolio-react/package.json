@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
-    "start": "node --loader ts-node/esm server/server.ts",
+    "start": "cd server && node --loader ts-node/esm server.ts",
     "build:full": "npm install && npm run build && cd server && npm install"
   },
   "dependencies": {

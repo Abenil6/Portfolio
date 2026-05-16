@@ -9,7 +9,7 @@ import BackToTop from '../components/BackToTop';
 
 function Portfolio() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <Navigation />
       <Hero />
       <About />

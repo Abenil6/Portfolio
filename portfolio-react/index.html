@@ -5,25 +5,29 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/jpg" href="/images/me1.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- SEO Meta Tags -->
   <title>Abenezer Aschalew | Full Stack Developer & Digital Architect</title>
-  <meta name="description" content="Portfolio of Abenezer Aschalew - A Junior Full Stack Developer specializing in high-performance MERN applications and Midnight Navy design." />
-  <meta name="keywords" content="Abenezer Aschalew, Full Stack Developer, MERN Stack, React Developer, Node.js, Portfolio, Ethiopia Developer" />
+  <meta name="description"
+    content="Portfolio of Abenezer Aschalew - A Junior Full Stack Developer specializing in high-performance MERN applications and Midnight Navy design." />
+  <meta name="keywords"
+    content="Abenezer Aschalew, Full Stack Developer, MERN Stack, React Developer, Node.js, Portfolio, Ethiopia Developer" />
   <meta name="author" content="Abenezer Aschalew" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://abenezer-portfolio.vercel.app/" />
+  <meta property="og:url" content="https://portfolio-rxb9.onrender.com/" />
   <meta property="og:title" content="Abenezer Aschalew | Full Stack Developer" />
-  <meta property="og:description" content="Engineering Midnight Magic - Premium Digital Experiences with React & Node.js" />
+  <meta property="og:description"
+    content="Engineering Midnight Magic - Premium Digital Experiences with React & Node.js" />
   <meta property="og:image" content="/images/me1.jpg" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://abenezer-portfolio.vercel.app/" />
+  <meta property="twitter:url" content="https://portfolio-rxb9.onrender.com/" />
   <meta property="twitter:title" content="Abenezer Aschalew | Full Stack Developer" />
-  <meta property="twitter:description" content="Engineering Midnight Magic - Premium Digital Experiences with React & Node.js" />
+  <meta property="twitter:description"
+    content="Engineering Midnight Magic - Premium Digital Experiences with React & Node.js" />
   <meta property="twitter:image" content="/images/me1.jpg" />
 
   <!-- Font Optimization -->
@@ -46,8 +50,8 @@
         justify-content: center;
         background-color: #010409;
         background-image:
-          radial-gradient(at 0% 0%, rgba(29,78,216,0.15) 0px, transparent 50%),
-          radial-gradient(at 100% 0%, rgba(30,58,138,0.1) 0px, transparent 50%),
+          radial-gradient(at 0% 0%, rgba(29, 78, 216, 0.15) 0px, transparent 50%),
+          radial-gradient(at 100% 0%, rgba(30, 58, 138, 0.1) 0px, transparent 50%),
           radial-gradient(circle at 50% 50%, #020617 0%, #010409 100%);
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
         overflow: hidden;
@@ -58,11 +62,11 @@
         width: 64px;
         height: 64px;
         border-radius: 50%;
-        border: 3px solid rgba(59,130,246,0.1);
+        border: 3px solid rgba(59, 130, 246, 0.1);
         border-top-color: #3b82f6;
         animation: spin 0.8s linear infinite;
         margin-bottom: 40px;
-        box-shadow: 0 0 30px -5px rgba(59,130,246,0.3);
+        box-shadow: 0 0 30px -5px rgba(59, 130, 246, 0.3);
       }
 
       /* Name heading */
@@ -82,7 +86,7 @@
       /* Subtitle / tagline */
       .loader-tagline {
         font-size: clamp(0.7rem, 1.5vw, 0.9rem);
-        color: rgba(148,163,184,0.7);
+        color: rgba(148, 163, 184, 0.7);
         letter-spacing: 0.35em;
         text-transform: uppercase;
         margin-top: 12px;
@@ -104,31 +108,87 @@
         position: absolute;
         width: 4px;
         height: 4px;
-        background: rgba(59,130,246,0.3);
+        background: rgba(59, 130, 246, 0.3);
         border-radius: 50%;
         animation: float-up 3s ease-in-out infinite;
       }
-      .loader-particle:nth-child(1) { left: 20%; animation-delay: 0s; animation-duration: 3.5s; }
-      .loader-particle:nth-child(2) { left: 40%; animation-delay: 0.8s; animation-duration: 2.8s; }
-      .loader-particle:nth-child(3) { left: 60%; animation-delay: 1.6s; animation-duration: 3.2s; }
-      .loader-particle:nth-child(4) { left: 80%; animation-delay: 0.4s; animation-duration: 4s; }
-      .loader-particle:nth-child(5) { left: 50%; animation-delay: 1.2s; animation-duration: 3s; }
+
+      .loader-particle:nth-child(1) {
+        left: 20%;
+        animation-delay: 0s;
+        animation-duration: 3.5s;
+      }
+
+      .loader-particle:nth-child(2) {
+        left: 40%;
+        animation-delay: 0.8s;
+        animation-duration: 2.8s;
+      }
+
+      .loader-particle:nth-child(3) {
+        left: 60%;
+        animation-delay: 1.6s;
+        animation-duration: 3.2s;
+      }
+
+      .loader-particle:nth-child(4) {
+        left: 80%;
+        animation-delay: 0.4s;
+        animation-duration: 4s;
+      }
+
+      .loader-particle:nth-child(5) {
+        left: 50%;
+        animation-delay: 1.2s;
+        animation-duration: 3s;
+      }
 
       @keyframes spin {
-        to { transform: rotate(360deg); }
+        to {
+          transform: rotate(360deg);
+        }
       }
+
       @keyframes fadeSlideUp {
-        from { opacity: 0; transform: translateY(16px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
+
       @keyframes pulse-line {
-        0%, 100% { opacity: 0.3; transform: scaleX(1); }
-        50% { opacity: 1; transform: scaleX(1.5); }
+
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scaleX(1);
+        }
+
+        50% {
+          opacity: 1;
+          transform: scaleX(1.5);
+        }
       }
+
       @keyframes float-up {
-        0% { transform: translateY(100vh) scale(0); opacity: 0; }
-        20% { opacity: 1; }
-        100% { transform: translateY(-20vh) scale(1); opacity: 0; }
+        0% {
+          transform: translateY(100vh) scale(0);
+          opacity: 0;
+        }
+
+        20% {
+          opacity: 1;
+        }
+
+        100% {
+          transform: translateY(-20vh) scale(1);
+          opacity: 0;
+        }
       }
     </style>
     <div id="preloader" aria-label="Loading portfolio">

@@ -29,7 +29,7 @@ export const submitContact = async (req: Request, res: Response) => {
         await resend.emails.send({
           from: 'Portfolio <onboarding@resend.dev>', // Free tier default
           to: process.env.EMAIL_TO || 'abenilee740@gmail.com', // Your email
-          reply_to: email, // So you can reply directly to the sender
+          replyTo: email, // So you can reply directly to the sender
           subject: `Portfolio Contact: ${subject}`,
           html: `
             <div style="font-family: sans-serif; color: #333; padding: 20px; border: 1px solid #eee; border-radius: 10px;">

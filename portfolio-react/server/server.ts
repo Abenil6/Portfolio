@@ -77,8 +77,28 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   });
 });
 
+// Health check endpoint (for external pingers like cron-job.org)
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'alive', timestamp: new Date().toISOString() });
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`🚀 Unified server is running on port ${PORT}`);
+
+  // Keep-alive: self-ping every 14 minutes to prevent Render free tier from sleeping
+  if (process.env.NODE_ENV === 'production' && process.env.RENDER_EXTERNAL_URL) {
+    const INTERVAL = 14 * 60 * 1000; // 14 minutes
+    setInterval(async () => {
+      try {
+        const url = `${process.env.RENDER_EXTERNAL_URL}/health`;
+        await fetch(url);
+        console.log(`♻️  Keep-alive ping sent at ${new Date().toLocaleTimeString()}`);
+      } catch (err) {
+        console.error('Keep-alive ping failed:', err);
+      }
+    }, INTERVAL);
+    console.log('💓 Keep-alive pinger active (every 14 min)');
+  }
 });

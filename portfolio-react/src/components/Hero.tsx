@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Twitter } from 'lucide-react';
+import { ArrowRight, Download, Github, Linkedin, Twitter } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 
 function Hero() {
@@ -158,6 +158,16 @@ function Hero() {
                 >
                   Start a Project
                   <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" size={24} />
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(34, 197, 94, 0.3)" }}
+                  whileTap={{ scale: 0.95 }}
+                  href="/CV Updated .pdf"
+                  download
+                  className="w-full sm:w-auto bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 px-10 py-5 rounded-[2rem] font-black text-lg flex items-center justify-center transition-all hover:bg-emerald-600/30"
+                >
+                  Download CV
+                  <Download className="ml-3" size={22} />
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.05)" }}

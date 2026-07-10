@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import { ArrowUp } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from "react";
+import { ArrowUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { getLenis } from "../hooks/useLenis";
 
 function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,15 +15,17 @@ function BackToTop() {
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    const lenis = getLenis();
+    if (lenis) {
+      lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (

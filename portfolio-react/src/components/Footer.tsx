@@ -1,5 +1,6 @@
 import { Twitter, Linkedin, Github, Instagram, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { scrollToHash } from '../hooks/useLenis';
 
 const socialLinks = [
   { icon: Twitter, href: 'https://x.com/abenezer74807', label: 'Twitter' },
@@ -16,7 +17,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20">
           <div className="col-span-1 md:col-span-1">
-            <a href="#home" className="text-3xl font-black tracking-tighter mb-8 block">
+            <a href="#home" onClick={(e) => { e.preventDefault(); scrollToHash('#home'); }} className="text-3xl font-black tracking-tighter mb-8 block">
               <span className="text-gradient">
                 A.A.
               </span>
@@ -31,9 +32,10 @@ function Footer() {
             <h4 className="text-sm font-black text-white uppercase tracking-[0.2em]">Quick Access</h4>
             <div className="flex flex-col space-y-3">
               {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
-                <a 
-                  key={item} 
-                  href={`#${item.toLowerCase()}`} 
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  onClick={(e) => { e.preventDefault(); scrollToHash(`#${item.toLowerCase()}`); }}
                   className="text-slate-500 hover:text-blue-400 transition-colors font-bold text-sm tracking-wide"
                 >
                   {item}

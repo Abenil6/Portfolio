@@ -102,7 +102,8 @@ function Contact() {
                     <motion.a 
                       key={i}
                       whileHover={{ y: -5, backgroundColor: "#3b82f6" }}
-                      href="#" 
+                      href="#"
+                      onClick={(e) => e.preventDefault()}
                       className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center transition-all border border-white/5"
                     >
                       <Icon size={20} />

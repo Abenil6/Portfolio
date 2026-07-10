@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getLenis } from '../hooks/useLenis';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -24,14 +25,14 @@ function Navigation() {
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
-    const element = document.querySelector(href);
+    const element = document.querySelector(href) as HTMLElement | null;
     if (element) {
-      const offset = 80;
-      const elementPosition = (element as HTMLElement).offsetTop - offset;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth'
-      });
+      const lenis = getLenis();
+      if (lenis) {
+        lenis.scrollTo(element, { offset: -80 });
+      } else {
+        window.scrollTo({ top: element.offsetTop - 80, behavior: 'smooth' });
+      }
       setIsMenuOpen(false);
     }
   };
@@ -51,11 +52,11 @@ function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             className="flex-shrink-0"
           >
-            <a href="#home" className="text-2xl font-black tracking-tight group">
-              <span className="text-gradient">
-                A.A.
-              </span>
-            </a>
+              <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="text-2xl font-black tracking-tight group">
+                <span className="text-gradient">
+                  A.A.
+                </span>
+              </a>
           </motion.div>
           
           {/* Desktop Navigation */}
@@ -81,6 +82,7 @@ function Navigation() {
               whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(37,99,235,0.3)' }}
               whileTap={{ scale: 0.95 }}
               href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all"
             >
               Hire Me
@@ -122,6 +124,7 @@ function Navigation() {
               <div className="pt-4 px-4">
                 <a
                   href="#contact"
+                  onClick={(e) => handleNavClick(e, '#contact')}
                   className="block w-full bg-blue-600 text-white text-center py-5 rounded-2xl font-bold shadow-lg shadow-blue-500/20"
                 >
                   Hire Me

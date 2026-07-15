@@ -20,9 +20,9 @@ export function scrollToHash(hash: string, offset = -80) {
 export function useLenis() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.07, // Makes the smooth scrolling much more obvious
       smoothWheel: true,
+      wheelMultiplier: 1,
     });
 
     lenisInstance = lenis;

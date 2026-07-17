@@ -142,8 +142,8 @@ function Hero() {
                 <span className="text-white font-bold decoration-blue-500 underline underline-offset-8 decoration-2">
                   Abenezer
                 </span>
-                . A Junior Full Stack Developer crafting high-performance,
-                Blue-Black digital experiences that stand out.
+                . A Junior Full Stack Developer crafting high-performance
+                digital experiences that stand out.
               </motion.p>
 
               <motion.div

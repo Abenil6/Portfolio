@@ -1,6 +1,12 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '../hooks/useGSAP';
+import { getLenis } from '../hooks/useLenis';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -37,12 +43,30 @@ const projects = [
 const ProjectCard = ({ project, index }: { project: any, index: number }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   const mouseXSpring = useSpring(x);
   const mouseYSpring = useSpring(y);
 
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+  // GSAP parallax effect on image
+  useGSAP(() => {
+    if (imageRef.current && cardRef.current) {
+      gsap.to(imageRef.current, {
+        yPercent: -15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+    }
+  }, { scope: cardRef, dependencies: [project.id] });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -63,6 +87,7 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
 
   return (
     <motion.div
+      ref={cardRef}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -75,9 +100,10 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
       <div className="h-full glass rounded-[3rem] overflow-hidden border-white/5 flex flex-col transition-all duration-500 group-hover:shadow-blue-500/10 group-hover:shadow-[0_20px_80px_-20px_rgba(59,130,246,0.15)]">
         <div className="relative aspect-[16/10] overflow-hidden">
           <img
+            ref={imageRef}
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out scale-125"
           />
           <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-40 transition-opacity duration-500`} />
           
@@ -126,46 +152,91 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
 };
 
 function Projects() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const horizontalRef = useRef<HTMLDivElement>(null);
+
+  // Horizontal scroll with pinning
+  useGSAP(() => {
+    if (!horizontalRef.current || !sectionRef.current) return;
+
+    const lenis = getLenis();
+    if (lenis) {
+      lenis.on('scroll', ScrollTrigger.update);
+    }
+
+    const cards = horizontalRef.current.querySelectorAll('.project-card');
+    const totalWidth = horizontalRef.current.scrollWidth - window.innerWidth;
+
+    // Only apply horizontal scroll on larger screens
+    const mm = gsap.matchMedia();
+    
+    mm.add("(min-width: 1024px)", () => {
+      gsap.to(cards, {
+        xPercent: -100 * (cards.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          pin: true,
+          scrub: 1,
+          end: () => `+=${totalWidth}`,
+          anticipatePin: 1,
+        },
+      });
+    });
+
+    return () => mm.revert();
+  }, { scope: sectionRef, dependencies: [] });
+
   return (
-    <section id="projects" className="py-32 relative overflow-hidden">
+    <section id="projects" ref={sectionRef} className="py-32 relative overflow-hidden">
       {/* Background Dots */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: "radial-gradient(#fff 1px, transparent 1px)", backgroundSize: "40px 40px" }}></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
-          <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+      <div className="relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="max-w-2xl">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-4 mb-4"
+              >
+                <div className="h-px w-12 bg-blue-500"></div>
+                <span className="text-sm font-black uppercase tracking-[0.3em] text-blue-400">Portfolio</span>
+              </motion.div>
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-5xl md:text-7xl font-black text-white tracking-tighter"
+              >
+                Featured <span className="text-gradient">Creations</span>
+              </motion.h2>
+            </div>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="flex items-center gap-4 mb-4"
+              className="text-lg text-slate-400 max-w-sm font-medium leading-relaxed"
             >
-              <div className="h-px w-12 bg-blue-500"></div>
-              <span className="text-sm font-black uppercase tracking-[0.3em] text-blue-400">Portfolio</span>
-            </motion.div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-5xl md:text-7xl font-black text-white tracking-tighter"
-            >
-              Featured <span className="text-gradient">Creations</span>
-            </motion.h2>
+              A collection of digital solutions where design meets functionality to create impactful experiences.
+            </motion.p>
           </div>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-lg text-slate-400 max-w-sm font-medium leading-relaxed"
-          >
-            A collection of digital solutions where design meets functionality to create impactful experiences.
-          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
+        {/* Horizontal scrolling container for desktop, normal grid for mobile */}
+        <div className="lg:overflow-hidden">
+          <div 
+            ref={horizontalRef}
+            className="lg:flex lg:flex-nowrap lg:w-fit grid grid-cols-1 md:grid-cols-2 lg:grid-cols-none gap-12 px-4 sm:px-6 lg:px-8"
+          >
+            {projects.map((project, index) => (
+              <div key={project.id} className="project-card lg:w-[500px] lg:flex-shrink-0 lg:first:ml-[max(2rem,calc((100vw-1280px)/2))] lg:last:mr-[max(2rem,calc((100vw-1280px)/2))]">
+                <ProjectCard project={project} index={index} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

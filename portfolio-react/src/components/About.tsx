@@ -1,9 +1,16 @@
 import { GraduationCap, Briefcase, Award, Heart, Sparkles } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { useGSAP } from '../hooks/useGSAP';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function About() {
   const containerRef = useRef(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -18,6 +25,60 @@ function About() {
     { icon: Award, label: 'Certifications', value: '5+ Verified', color: 'from-purple-500 to-pink-500' },
     { icon: Heart, label: 'Passion', value: 'Full Stack', color: 'from-rose-500 to-orange-500' },
   ];
+
+  // GSAP scroll-triggered reveals with stagger
+  useGSAP(() => {
+    if (!contentRef.current || !statsRef.current) return;
+
+    // Animate content elements with stagger
+    const contentElements = contentRef.current.querySelectorAll('.reveal-item');
+    gsap.fromTo(
+      contentElements,
+      { 
+        opacity: 0, 
+        y: 60,
+        rotateX: -15 
+      },
+      {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none reverse",
+        }
+      }
+    );
+
+    // Animate stats cards with stagger
+    const statCards = statsRef.current.querySelectorAll('.stat-card');
+    gsap.fromTo(
+      statCards,
+      { 
+        opacity: 0, 
+        scale: 0.8,
+        y: 40
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "back.out(1.4)",
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: statsRef.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        }
+      }
+    );
+  }, { scope: containerRef, dependencies: [] });
 
   return (
     <section 
@@ -56,37 +117,33 @@ function About() {
             </div>
           </motion.div>
 
-          <div className="lg:w-3/5">
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="inline-flex items-center gap-4 mb-6">
+          <div className="lg:w-3/5" ref={contentRef}>
+            <div>
+              <div className="reveal-item inline-flex items-center gap-4 mb-6">
                 <span className="text-sm font-black uppercase tracking-[0.4em] text-blue-400">The Journey</span>
                 <div className="h-px w-20 bg-blue-500/20"></div>
               </div>
               
-              <h2 className="text-5xl md:text-7xl font-black text-white mb-10 tracking-tighter">
+              <h2 className="reveal-item text-5xl md:text-7xl font-black text-white mb-10 tracking-tighter">
                 Crafting With <span className="text-gradient">Purpose</span>
               </h2>
               
-              <p className="text-2xl text-slate-200 mb-8 leading-relaxed font-bold">
+              <p className="reveal-item text-2xl text-slate-200 mb-8 leading-relaxed font-bold">
                 A Junior Full Stack Developer with a vision for <span className="text-blue-400">exceptional digital products.</span>
               </p>
               
-              <p className="text-lg text-slate-400 mb-12 leading-relaxed max-w-2xl font-medium">
+              <p className="reveal-item text-lg text-slate-400 mb-12 leading-relaxed max-w-2xl font-medium">
                 I combine technical discipline with creative intuition to build software that not only works 
                 but feels right. My background in Information Science from Haramaya University provides the 
                 theoretical foundation for my practical engineering skills.
               </p>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+              <div ref={statsRef} className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                 {stats.map((stat, i) => (
                   <motion.div
                     key={i}
                     whileHover={{ y: -10 }}
-                    className="group flex flex-col items-center text-center p-6 rounded-[2rem] glass transition-all duration-500 hover:shadow-blue-500/10 hover:shadow-2xl"
+                    className="stat-card group flex flex-col items-center text-center p-6 rounded-[2rem] glass transition-all duration-500 hover:shadow-blue-500/10 hover:shadow-2xl"
                   >
                     <div className={`w-14 h-14 bg-gradient-to-br ${stat.color} text-white rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
                       <stat.icon size={28} />
@@ -96,7 +153,7 @@ function About() {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

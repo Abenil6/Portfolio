@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { ArrowRight, Download, Github, Linkedin, Twitter } from "lucide-react";
 import { scrollToHash } from "@/hooks/useLenis";
 import { useRef, useState, useEffect } from "react";
+import ParticleBackground from "./ParticleBackground";
 
 function Hero() {
   const containerRef = useRef(null);
@@ -70,6 +71,9 @@ function Hero() {
       ref={containerRef}
       className="relative min-h-[100vh] flex items-center justify-center pt-20 overflow-hidden"
     >
+      {/* WebGL Particle Background */}
+      <ParticleBackground />
+      
       {/* Blue-Black Midnight Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div

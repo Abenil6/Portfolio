@@ -105,6 +105,7 @@ function Contact() {
                       href="#"
                       onClick={(e) => e.preventDefault()}
                       className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center transition-all border border-white/5"
+                      data-magnetic
                     >
                       <Icon size={20} />
                     </motion.a>
@@ -158,6 +159,7 @@ function Contact() {
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full relative group overflow-hidden bg-blue-600 text-white py-6 rounded-[2rem] font-black text-xl flex items-center justify-center transition-all shadow-2xl hover:shadow-blue-500/40 active:scale-95 disabled:opacity-50"
+                  data-magnetic
                 >
                   <span className="relative z-10 flex items-center gap-3">
                     {isSubmitting ? <Loader2 className="animate-spin" /> : <>Send Message <Send size={24} /></>}

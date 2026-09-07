@@ -83,11 +83,11 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
           
           <div className="absolute top-6 right-6 flex gap-3 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
             {project.link && (
-              <a href={project.link} target="_blank" className="p-3 bg-slate-900/90 rounded-2xl text-white hover:bg-blue-500 transition-all shadow-xl">
+              <a href={project.link} target="_blank" className="p-3 bg-slate-900/90 rounded-2xl text-white hover:bg-blue-500 transition-all shadow-xl" data-magnetic>
                 <ExternalLink size={20} />
               </a>
             )}
-            <a href={project.github} target="_blank" className="p-3 bg-slate-900/90 rounded-2xl text-white hover:bg-blue-500 transition-all shadow-xl">
+            <a href={project.github} target="_blank" className="p-3 bg-slate-900/90 rounded-2xl text-white hover:bg-blue-500 transition-all shadow-xl" data-magnetic>
               <Github size={20} />
             </a>
           </div>

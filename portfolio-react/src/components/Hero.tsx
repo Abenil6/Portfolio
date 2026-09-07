@@ -162,6 +162,7 @@ function Hero() {
                     scrollToHash("#contact");
                   }}
                   className="group w-full sm:w-auto bg-blue-600 text-white px-10 py-5 rounded-[2rem] font-black text-lg flex items-center justify-center transition-all shadow-blue-glow"
+                  data-magnetic
                 >
                   Start a Project
                   <ArrowRight
@@ -178,6 +179,7 @@ function Hero() {
                   href="/CVNew.pdf"
                   download
                   className="w-full sm:w-auto bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 px-10 py-5 rounded-[2rem] font-black text-lg flex items-center justify-center transition-all hover:bg-emerald-600/30"
+                  data-magnetic
                 >
                   Download CV
                   <Download className="ml-3" size={22} />
@@ -194,6 +196,7 @@ function Hero() {
                     scrollToHash("#projects");
                   }}
                   className="w-full sm:w-auto glass px-10 py-5 rounded-[2rem] font-black text-lg flex items-center justify-center transition-all"
+                  data-magnetic
                 >
                   View Work
                 </motion.a>
@@ -217,6 +220,7 @@ function Hero() {
                     href={social.href}
                     target="_blank"
                     className="text-slate-500 transition-colors"
+                    data-magnetic
                   >
                     <social.icon size={28} />
                   </motion.a>

@@ -6,19 +6,22 @@ import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
+import PageTransition from '../components/PageTransition';
 
 function Portfolio() {
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
-      <BackToTop />
-    </div>
+    <PageTransition transitionType="default">
+      <div className="min-h-screen">
+        <Navigation />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+        <Footer />
+        <BackToTop />
+      </div>
+    </PageTransition>
   );
 }
 

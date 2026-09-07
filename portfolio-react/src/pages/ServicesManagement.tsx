@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import { useServices, useCreateService, useUpdateService, useDeleteService } from '@/api/services';
 import { Service } from '@/types';
 import { motion, AnimatePresence } from 'framer-motion';
+import PageTransition from '@/components/PageTransition';
 
 const serviceSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters'),
@@ -81,7 +82,8 @@ function ServicesManagement() {
   };
 
   return (
-    <div className="min-h-screen">
+    <PageTransition transitionType="default">
+      <div className="min-h-screen">
       {/* Header */}
       <header className="bg-[#010409]/80 backdrop-blur-md sticky top-0 z-10 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -283,6 +285,7 @@ function ServicesManagement() {
         )}
       </main>
     </div>
+    </PageTransition>
   );
 }
 

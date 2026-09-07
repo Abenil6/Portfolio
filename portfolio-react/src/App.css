@@ -3,6 +3,13 @@
   min-height: 100vh;
 }
 
+/* Custom Cursor - Hide default cursor on desktop */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
 /* Utility classes */
 .container {
   max-width: 1200px;

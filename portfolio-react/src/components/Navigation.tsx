@@ -71,6 +71,7 @@ function Navigation() {
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className="text-sm font-bold text-slate-400 hover:text-blue-400 transition-all relative group"
+                  data-magnetic
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
@@ -84,6 +85,7 @@ function Navigation() {
               href="#contact"
               onClick={(e) => handleNavClick(e, '#contact')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all"
+              data-magnetic
             >
               Hire Me
             </motion.a>

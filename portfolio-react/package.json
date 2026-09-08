@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
     "start": "cd server && npx tsx server.ts",
-    "build:full": "npm install --include=dev && npm run build && cd server && npm install"
+    "build:full": "npm install --include=dev --legacy-peer-deps && npm run build && cd server && npm install"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

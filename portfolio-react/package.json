@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "build:full": "tsc --noEmit && vite build",
+    "start": "node prod-server.js",
     "lint": "eslint .",
     "preview": "vite preview",
     "type-check": "tsc --noEmit"

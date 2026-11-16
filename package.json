@@ -1,0 +1,10 @@
+{
+  "name": "portfolio-root",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd portfolio-react && (pnpm run build || npm run build)",
+    "build:full": "cd portfolio-react && (pnpm run build:full || npm run build:full)",
+    "start": "cd portfolio-react && npm start"
+  }
+}

@@ -7,21 +7,33 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+        slateTeal: {
+          light: '#23495D',
+          DEFAULT: '#193848',
+          dark: '#122834',
+          deep: '#0D1E28',
+        },
+        creamWhite: '#F8FAFC',
+        paperBg: '#F3F5F7',
+        pill: {
+          coral: '#D93B57',
+          cyan: '#4ECDC4',
+          sky: '#60D5E8',
+          amber: '#F59E0B',
+          caramel: '#C16928',
+          pink: '#F472B6',
+          teal: '#2DD4BF',
         },
       },
       fontFamily: {
-        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'sans-serif'],
+        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        'hard-sm': '2px 2px 0px #0F172A',
+        'hard': '3px 3px 0px #0F172A',
+        'hard-lg': '5px 5px 0px #0F172A',
+        'hard-xl': '8px 8px 0px #0F172A',
       },
     },
   },

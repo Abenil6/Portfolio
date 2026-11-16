@@ -3,10 +3,13 @@
   min-height: 100vh;
 }
 
-/* Custom Cursor - Hide default cursor on desktop */
+/* Custom Cursor - Hide default cursor on desktop, but preserve text cursors for inputs */
 @media (pointer: fine) {
-  * {
+  body, a, button, [data-magnetic] {
     cursor: none !important;
+  }
+  input, textarea, select {
+    cursor: text !important;
   }
 }
 
@@ -23,11 +26,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #020617;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3b82f6;
+  background: #1e3a8a;
   border-radius: 5px;
 }
 

@@ -1,288 +1,194 @@
-import { motion, useScroll, useTransform, Variants } from "framer-motion";
-import { ArrowRight, Download, Github, Linkedin, Twitter } from "lucide-react";
-import { scrollToHash } from "@/hooks/useLenis";
-import { useRef, useState, useEffect } from "react";
-import Hero3DScene from "./Hero3DScene";
-import ParticleBackground from "./ParticleBackground";
+import { motion } from 'framer-motion';
+import { ArrowDown } from 'lucide-react';
+import { scrollToHash } from '../hooks/useLenis';
+import { useContactModal } from '../store/useContactModalStore';
 
-function Hero() {
-  const containerRef = useRef(null);
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-
-  // For looping the animation
-  const [loopKey, setLoopKey] = useState(0);
-  const titleText = "Engineering Midnight Magic";
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLoopKey((prev) => prev + 1);
-    }, 8000); // Reset every 8 seconds
-    return () => clearInterval(interval);
-  }, []);
-
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.2,
-      },
-    },
-    exit: {
-      opacity: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
-  const character: Variants = {
-    visible: {
-      opacity: 1,
-      display: "inline-block",
-      transition: { duration: 0.01 },
-    },
-    hidden: {
-      opacity: 0,
-      display: "none",
-    },
-  };
-
-  const fadeUp: Variants = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-        delay: 0.5,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      y: 20,
-    },
-  };
-
+export default function Hero() {
+  const { openModal } = useContactModal();
   return (
-    <section
-      id="home"
-      ref={containerRef}
-      className="relative min-h-[100vh] flex items-center justify-center pt-20 overflow-hidden"
-    >
-      {/* WebGL Particle Background */}
-      <ParticleBackground />
-      
-      {/* 3D Scene Background */}
-      <Hero3DScene />
+    <section id="home" className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden pt-28">
+      {/* Upper Canvas: Light Off-White with Subtle Grid */}
+      <div className="absolute top-0 left-0 right-0 h-[58%] bg-[#F8FAFC] bg-grid-subtle -z-10" />
 
+      {/* Lower Canvas: Deep Slate-Teal Ground */}
+      <div className="absolute bottom-0 left-0 right-0 h-[42%] bg-slateTeal -z-10 bg-grid-dark" />
 
-      {/* Blue-Black Midnight Glows */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            x: [0, 150, 0],
-            y: [0, 100, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-[20%] -left-[10%] w-[80%] h-[80%] bg-blue-900/10 rounded-full blur-[150px]"
-        />
-        <motion.div
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 80, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[30%] -right-[20%] w-[60%] h-[60%] bg-indigo-900/10 rounded-full blur-[150px]"
-        />
-      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow flex flex-col justify-between z-10">
+        {/* Main Grid: Headline Left, Arch Portal Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center pt-4 lg:pt-8">
+          
+          {/* Left Hero Column */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            {/* Serif Display Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="font-serif text-5xl sm:text-6xl lg:text-[4.75rem] font-normal leading-[1.08] tracking-tight text-slateTeal-deep mb-6"
+            >
+              Full stack engineer <br className="hidden sm:inline" />
+              <span className="italic font-serif">based in Ethiopia Addis ababa</span>
+            </motion.h1>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="lg:flex lg:items-center lg:justify-between gap-16">
-          <motion.div
-            style={{ y: y1, opacity }}
-            className="lg:w-3/5 text-center lg:text-left"
-          >
-            <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 text-xs font-black uppercase tracking-widest text-blue-400 bg-blue-950/40 border border-white/5 rounded-2xl backdrop-blur-md">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                </span>
-                Available for New Projects
-              </div>
-
-              {/* Looping Typewriter Container */}
-              <motion.h1
-                key={loopKey}
-                initial="hidden"
-                animate="visible"
-                variants={container}
-                className="text-5xl md:text-[4.5rem] font-black text-white mb-8 tracking-tighter leading-[0.9] min-h-[1.7em]"
-              >
-                {titleText.split("").map((char, index) => {
-                  const isMidnightMagic = index >= 12;
-                  return (
-                    <motion.span
-                      variants={character}
-                      key={index}
-                      className={isMidnightMagic ? "text-gradient italic" : ""}
-                    >
-                      {char === " " ? "\u00A0" : char}
-                    </motion.span>
-                  );
-                })}
-                <motion.span
-                  animate={{ opacity: [1, 0, 1] }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                  className="inline-block w-1 h-10 md:h-16 bg-blue-500 ml-1 align-middle"
-                />
-              </motion.h1>
-
-              <motion.p
-                variants={fadeUp}
-                className="text-lg md:text-xl text-slate-400 mb-12 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium"
-              >
-                Hi, I'm{" "}
-                <span className="text-white font-bold decoration-blue-500 underline underline-offset-8 decoration-2">
-                  Abenezer
-                </span>
-                . A Junior Full Stack Developer crafting high-performance
-                digital experiences that stand out.
-              </motion.p>
-
-              <motion.div
-                variants={fadeUp}
-                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6"
-              >
-                <motion.a
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 0 40px rgba(37, 99, 235, 0.4)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToHash("#contact");
-                  }}
-                  className="group w-full sm:w-auto bg-blue-600 text-white px-10 py-5 rounded-[2rem] font-black text-lg flex items-center justify-center transition-all shadow-blue-glow"
-                  data-magnetic
-                >
-                  Start a Project
-                  <ArrowRight
-                    className="ml-3 group-hover:translate-x-2 transition-transform"
-                    size={24}
-                  />
-                </motion.a>
-                <motion.a
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 0 30px rgba(34, 197, 94, 0.3)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  href="/CVNew.pdf"
-                  download
-                  className="w-full sm:w-auto bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 px-10 py-5 rounded-[2rem] font-black text-lg flex items-center justify-center transition-all hover:bg-emerald-600/30"
-                  data-magnetic
-                >
-                  Download CV
-                  <Download className="ml-3" size={22} />
-                </motion.a>
-                <motion.a
-                  whileHover={{
-                    scale: 1.05,
-                    backgroundColor: "rgba(255, 255, 255, 0.05)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  href="#projects"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToHash("#projects");
-                  }}
-                  className="w-full sm:w-auto glass px-10 py-5 rounded-[2rem] font-black text-lg flex items-center justify-center transition-all"
-                  data-magnetic
-                >
-                  View Work
-                </motion.a>
-              </motion.div>
-
-              <motion.div
-                variants={fadeUp}
-                className="mt-16 flex items-center justify-center lg:justify-start space-x-8"
-              >
-                {[
-                  { icon: Github, href: "https://github.com/Abenil6" },
-                  {
-                    icon: Linkedin,
-                    href: "https://www.linkedin.com/in/abenezer-aschalew-ab17ab261/",
-                  },
-                  { icon: Twitter, href: "https://x.com/abenezer74807" },
-                ].map((social, i) => (
-                  <motion.a
-                    key={i}
-                    whileHover={{ y: -5, color: "#3b82f6" }}
-                    href={social.href}
-                    target="_blank"
-                    className="text-slate-500 transition-colors"
-                    data-magnetic
-                  >
-                    <social.icon size={28} />
-                  </motion.a>
-                ))}
-              </motion.div>
+            {/* Discipline Ticker */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="flex items-center gap-3 text-sm sm:text-base font-bold tracking-wider uppercase text-slate-800 mb-8"
+            >
+              <span>BACKEND</span>
+              <span className="text-amber-500 text-lg">✻</span>
+              <span className="font-serif capitalize text-lg font-normal tracking-normal text-slate-700">Frontend</span>
+              <span className="text-amber-500 text-lg">✻</span>
+              <span>MOBILE &amp; APIs</span>
             </motion.div>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, type: "spring" }}
-            className="lg:w-2/5 mt-20 lg:mt-0 relative"
-          >
-            <div className="relative w-80 h-80 md:w-[450px] md:h-[450px] mx-auto">
-              {/* Deep Blue Aura */}
-              <div className="absolute inset-0 bg-blue-600/20 rounded-[4rem] rotate-12 blur-[60px] animate-pulse" />
-
-              <div className="relative w-full h-full p-4 glass rounded-[4.5rem] overflow-hidden group">
-                <img
-                  src="/images/me1.jpg"
-                  alt="Abenezer"
-                  className="w-full h-full object-cover rounded-[3.5rem] grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#010409] via-transparent to-transparent opacity-90" />
-              </div>
-
-              {/* Status Badge */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -bottom-6 -right-6 glass p-6 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/10"
+            {/* CTA Button Group */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="flex flex-wrap items-center gap-4 mb-8 sm:mb-12"
+            >
+              <a
+                href="#projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToHash('#projects');
+                }}
+                className="bg-slateTeal hover:bg-slateTeal-dark text-white px-8 py-3.5 rounded-full text-sm font-semibold transition-all shadow-sm hover:scale-[1.02]"
+                data-magnetic
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-2xl flex items-center justify-center font-bold">
-                    🚀
-                  </div>
-                  <div>
-                    <p className="text-sm font-black text-white">
-                      5+ Real World
-                    </p>
-                    <p className="text-xs font-bold text-slate-500 uppercase tracking-tighter">
-                      Projects Done
-                    </p>
-                  </div>
+                Get a project
+              </a>
+
+              <button
+                type="button"
+                onClick={openModal}
+                className="bg-white hover:bg-slate-50 text-slate-900 border border-slate-900/80 px-8 py-3.5 rounded-full text-sm font-semibold transition-all shadow-sm hover:scale-[1.02] cursor-pointer"
+                data-magnetic
+              >
+                Let's talk
+              </button>
+            </motion.div>
+          </div>
+
+          {/* Right Hero Column: Cutout Portrait & Badges */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end relative items-end">
+            <div className="relative w-[300px] sm:w-[360px] md:w-[410px] flex justify-center items-end">
+              
+              {/* Cutout Portrait without frame */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                className="relative z-10 w-full flex justify-center items-end"
+              >
+                <img
+                  src="/images/memain.png"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = '/images/me1.jpg';
+                  }}
+                  alt="Abenezer Aschalew"
+                  className="w-full max-h-[460px] sm:max-h-[500px] lg:max-h-[540px] object-contain object-bottom filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)]"
+                />
+              </motion.div>
+
+              {/* Rotating Circular "HIRE ME" Stamp Badge */}
+              <motion.div
+                initial={{ scale: 0, rotate: -45 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.4, type: 'spring', stiffness: 180 }}
+                className="absolute -left-4 sm:-left-8 bottom-6 sm:bottom-10 z-30 w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center cursor-pointer group"
+                onClick={openModal}
+              >
+                {/* Rotating SVG with Circular Text */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
+                  className="w-full h-full absolute inset-0"
+                >
+                  <svg viewBox="0 0 120 120" className="w-full h-full fill-current text-white">
+                    <circle cx="60" cy="60" r="54" fill="#0D1E28" stroke="#38BDF8" strokeWidth="1.5" />
+                    <defs>
+                      <path
+                        id="circlePath"
+                        d="M 60, 60 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
+                      />
+                    </defs>
+                    <text fontSize="10.5" fontWeight="bold" letterSpacing="2.5">
+                      <textPath href="#circlePath" fill="#F8FAFC">
+                        • HIRE ME • HIRE ME • HIRE ME
+                      </textPath>
+                    </text>
+                  </svg>
+                </motion.div>
+
+                {/* Central Arrow Button */}
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-slateTeal flex items-center justify-center text-sky-300 shadow-inner group-hover:scale-110 transition-transform z-10 border border-sky-400/40">
+                  <ArrowDown size={20} className="stroke-[2.5]" />
                 </div>
               </motion.div>
+
             </div>
-          </motion.div>
+          </div>
         </div>
+
+        {/* Lower Shelf: Interactive Draggable Floating Colored Pills on Deep Slate-Teal Canvas */}
+        <div className="pt-12 pb-14 sm:pb-16">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 max-w-4xl">
+            {/* Pill 1: Backend (Coral) */}
+            <motion.div
+              drag
+              dragConstraints={{ top: -15, bottom: 15, left: -25, right: 25 }}
+              dragElastic={0.2}
+              whileHover={{ scale: 1.08, rotate: -8 }}
+              whileDrag={{ scale: 1.12, cursor: 'grabbing' }}
+              className="bg-pill-coral text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-full border-2 border-slate-900 shadow-neo -rotate-[10deg] cursor-grab active:cursor-grabbing select-none"
+            >
+              Backend
+            </motion.div>
+
+            {/* Pill 2: Frontend (Sky Aqua) */}
+            <motion.div
+              drag
+              dragConstraints={{ top: -15, bottom: 15, left: -25, right: 25 }}
+              dragElastic={0.2}
+              whileHover={{ scale: 1.08, rotate: 6 }}
+              whileDrag={{ scale: 1.12, cursor: 'grabbing' }}
+              className="bg-pill-sky text-slate-950 font-bold text-base sm:text-lg px-8 py-3.5 rounded-full border-2 border-slate-900 shadow-neo rotate-[6deg] cursor-grab active:cursor-grabbing select-none"
+            >
+              Frontend
+            </motion.div>
+
+            {/* Pill 3: Mobile (Amber) */}
+            <motion.div
+              drag
+              dragConstraints={{ top: -15, bottom: 15, left: -25, right: 25 }}
+              dragElastic={0.2}
+              whileHover={{ scale: 1.08, rotate: -12 }}
+              whileDrag={{ scale: 1.12, cursor: 'grabbing' }}
+              className="bg-pill-amber text-slate-950 font-bold text-base sm:text-lg px-8 py-3.5 rounded-full border-2 border-slate-900 shadow-neo -rotate-[12deg] cursor-grab active:cursor-grabbing select-none"
+            >
+              Mobile
+            </motion.div>
+
+            {/* Pill 4: APIs (Caramel/Teal) */}
+            <motion.div
+              drag
+              dragConstraints={{ top: -15, bottom: 15, left: -25, right: 25 }}
+              dragElastic={0.2}
+              whileHover={{ scale: 1.08, rotate: 5 }}
+              whileDrag={{ scale: 1.12, cursor: 'grabbing' }}
+              className="bg-pill-caramel text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-full border-2 border-slate-900 shadow-neo rotate-[5deg] cursor-grab active:cursor-grabbing select-none"
+            >
+              APIs
+            </motion.div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
 }
-
-export default Hero;

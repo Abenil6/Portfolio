@@ -4,92 +4,84 @@
 
 @layer base {
   :root {
-    --primary: 37 99 235;
-    --navy-black: #010409;
-    --navy-accent: #020617;
+    --bg-light: #F8FAFC;
+    --bg-dark: #193848;
+    --text-dark: #0F172A;
+    --text-light: #F8FAFC;
   }
 
-  * {
-    @apply border-white/5;
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+    background-color: #F8FAFC;
   }
 
   body {
-    @apply font-sans antialiased text-slate-300 !important;
-    background-color: #010409 !important;
-    background-image:
-      radial-gradient(at 0% 0%, rgba(29, 78, 216, 0.1) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(30, 58, 138, 0.1) 0px, transparent 50%),
-      radial-gradient(circle at 50% 50%, #020617 0%, #010409 100%) !important;
-    background-attachment: fixed !important;
-  }
-
-  /* Force dark color scheme always */
-  html {
-    /* scroll-behavior: smooth; */
-    color-scheme: dark !important;
-    background-color: #010409 !important;
+    @apply font-sans antialiased text-slate-800 bg-[#F8FAFC];
+    margin: 0;
+    padding: 0;
   }
 }
 
 @layer utilities {
-  .bg-blue-black {
-    background-color: #010409 !important;
+  /* Subtle technical grid pattern for the top half */
+  .bg-grid-subtle {
+    background-size: 32px 32px;
+    background-image: 
+      linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
   }
 
-  .glass {
-    @apply bg-[#050a1f]/80 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] !important;
+  /* Deep slate-teal technical grid for dark sections */
+  .bg-grid-dark {
+    background-size: 36px 36px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   }
 
-  .text-gradient {
-    @apply bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-600 bg-clip-text text-transparent !important;
+  /* Glassmorphism for light and dark cards */
+  .glass-light {
+    @apply bg-white/80 backdrop-blur-md border border-slate-200/80 shadow-sm;
   }
 
-  .shadow-blue-glow {
-    box-shadow: 0 0 40px -10px rgba(37, 99, 235, 0.2) !important;
+  .glass-dark {
+    @apply bg-[#142D3A]/80 backdrop-blur-md border border-white/10 shadow-xl;
   }
 
-  .perspective-1000 {
-    perspective: 1000px;
+  /* Neobrutalist hard shadow helpers */
+  .shadow-neo-sm {
+    box-shadow: 2px 2px 0px #0F172A;
   }
 
-  .backface-hidden {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+  .shadow-neo {
+    box-shadow: 3px 3px 0px #0F172A;
   }
 
-  /* Custom scrollbar for modal */
-  .custom-scrollbar::-webkit-scrollbar {
+  .shadow-neo-lg {
+    box-shadow: 5px 5px 0px #0F172A;
+  }
+
+  .shadow-neo-hover:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #0F172A;
+  }
+
+  /* Custom scrollbar matching slate-teal theme */
+  ::-webkit-scrollbar {
     width: 8px;
   }
 
-  .custom-scrollbar::-webkit-scrollbar-track {
-    @apply bg-slate-800/50 rounded-full;
+  ::-webkit-scrollbar-track {
+    background: #F1F5F9;
   }
 
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-blue-500/50 rounded-full hover:bg-blue-500/70;
+  ::-webkit-scrollbar-thumb {
+    background: #193848;
+    border-radius: 4px;
   }
 
-  /* Focus visible styles for accessibility */
-  *:focus-visible {
-    @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-slate-900 rounded-lg;
-  }
-
-  /* Smooth transitions for filter changes */
-  @media (prefers-reduced-motion: no-preference) {
-    .grid > * {
-      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    }
-  }
-
-  /* Reduced motion support */
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #122834;
   }
 }

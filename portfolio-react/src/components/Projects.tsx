@@ -8,7 +8,7 @@ const projects: Project[] = [
     id: 1,
     title: 'Student Information Management System',
     description: 'A fully developed Secure web-based system for student registration, academic records, and school communication.',
-    image: '/images/husims .png',
+    image: '/images/husims.png',
     github: 'https://github.com/Abenil6/HU-SIMS',
     link: 'https://hunb-sims.vercel.app/',
     tags: ['React', 'Node.js', 'MongoDB', 'Express.js', 'JWT', 'bcrypt'],
@@ -76,38 +76,39 @@ const projects: Project[] = [
 
 function Projects() {
   return (
-    <section id="projects" className="py-32 relative overflow-hidden">
-      {/* Background Dots */}
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: "radial-gradient(#fff 1px, transparent 1px)", backgroundSize: "40px 40px" }}></div>
-      
+    <section id="projects" className="py-28 sm:py-36 bg-slateTeal text-white relative overflow-hidden bg-grid-dark border-t border-slate-700/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <div className="max-w-2xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex items-center gap-4 mb-4"
+              className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-sky-400 mb-4"
             >
-              <div className="h-px w-12 bg-blue-500"></div>
-              <span className="text-sm font-black uppercase tracking-[0.3em] text-blue-400">Portfolio</span>
+              <span>SELECTED WORK</span>
+              <span className="text-amber-400 text-sm">✻</span>
+              <span>PORTFOLIO</span>
             </motion.div>
+            
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-5xl md:text-7xl font-black text-white tracking-tighter"
+              className="text-4xl sm:text-5xl lg:text-6xl font-serif text-white tracking-tight leading-[1.12]"
             >
-              Featured <span className="text-gradient">Creations</span>
+              Featured Works & <br />
+              <span className="italic font-serif text-sky-300">Digital Creations</span>
             </motion.h2>
           </div>
+          
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-lg text-slate-400 max-w-sm font-medium leading-relaxed"
+            className="text-base sm:text-lg text-slate-300 max-w-md leading-relaxed font-normal"
           >
-            A collection of digital solutions where design meets functionality to create impactful experiences.
+            A curated collection of web applications and engineering projects where design meets robust architecture.
           </motion.p>
         </div>
 

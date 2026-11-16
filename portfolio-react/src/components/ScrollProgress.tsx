@@ -51,7 +51,7 @@ function ScrollProgress() {
     >
       <div 
         ref={progressBarRef}
-        className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 origin-left scale-x-0"
+        className="h-full bg-gradient-to-r from-pill-coral via-pill-amber to-pill-sky origin-left scale-x-0"
         style={{ transformOrigin: "left center" }}
       />
     </div>

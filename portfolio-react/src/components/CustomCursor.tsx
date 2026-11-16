@@ -15,7 +15,7 @@ const CustomCursor = () => {
   // Magnetic target
   const magneticTarget = useRef<{ x: number; y: number } | null>(null);
   
-  const animationFrameId = useRef<number>();
+  const animationFrameId = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     // Detect mobile/touch devices
@@ -35,15 +35,8 @@ const CustomCursor = () => {
   useEffect(() => {
     if (isMobile) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mousePos.current = { x: e.clientX, y: e.clientY };
-    };
-
-    const handleMouseDown = () => setCursorState('clicked');
-    const handleMouseUp = () => setCursorState('default');
-
-    // Check for magnetic elements
-    const checkMagnetic = () => {
+    // Check for magnetic elements on mouse move (avoids forced reflow on every rAF)
+    const checkMagnetic = (mouseX: number, mouseY: number) => {
       const magneticElements = document.querySelectorAll('[data-magnetic]');
       let foundMagnetic = false;
 
@@ -54,23 +47,23 @@ const CustomCursor = () => {
         
         // Calculate distance from cursor to element center
         const distance = Math.sqrt(
-          Math.pow(mousePos.current.x - centerX, 2) + 
-          Math.pow(mousePos.current.y - centerY, 2)
+          Math.pow(mouseX - centerX, 2) + 
+          Math.pow(mouseY - centerY, 2)
         );
 
-        // Magnetic radius (adjust as needed)
+        // Magnetic radius
         const magneticRadius = Math.max(rect.width, rect.height) * 0.8;
 
         if (distance < magneticRadius) {
           foundMagnetic = true;
-          // Calculate pull strength (stronger when closer)
+          // Calculate pull strength
           const strength = 1 - (distance / magneticRadius);
-          const pullX = (centerX - mousePos.current.x) * strength * 0.3;
-          const pullY = (centerY - mousePos.current.y) * strength * 0.3;
+          const pullX = (centerX - mouseX) * strength * 0.3;
+          const pullY = (centerY - mouseY) * strength * 0.3;
           
           magneticTarget.current = {
-            x: mousePos.current.x + pullX,
-            y: mousePos.current.y + pullY
+            x: mouseX + pullX,
+            y: mouseY + pullY
           };
           
           if (cursorState !== 'clicked') {
@@ -87,10 +80,16 @@ const CustomCursor = () => {
       }
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      mousePos.current = { x: e.clientX, y: e.clientY };
+      checkMagnetic(e.clientX, e.clientY);
+    };
+
+    const handleMouseDown = () => setCursorState('clicked');
+    const handleMouseUp = () => setCursorState('default');
+
     // Smooth animation loop with lerp interpolation
     const animate = () => {
-      checkMagnetic();
-
       const targetX = magneticTarget.current?.x ?? mousePos.current.x;
       const targetY = magneticTarget.current?.y ?? mousePos.current.y;
 
@@ -153,24 +152,20 @@ const CustomCursor = () => {
       {/* Cursor Dot (inner) */}
       <div
         ref={cursorDotRef}
-        className={`fixed top-0 left-0 w-2 h-2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[9999] transition-transform duration-150 ease-out ${getScaleClass()}`}
+        className={`fixed top-0 left-0 w-2.5 h-2.5 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[9999] transition-transform duration-150 ease-out ${getScaleClass()}`}
         style={{ willChange: 'transform' }}
       >
-        <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/50" />
+        <div className="w-full h-full rounded-full bg-slate-900" />
       </div>
 
       {/* Cursor Outline (outer ring) */}
       <div
         ref={cursorOutlineRef}
-        className={`fixed top-0 left-0 w-8 h-8 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[9998] transition-all duration-300 ease-out ${getScaleClass()}`}
+        className={`fixed top-0 left-0 w-9 h-9 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[9998] transition-all duration-300 ease-out ${getScaleClass()}`}
         style={{ willChange: 'transform' }}
       >
         <div 
-          className="w-full h-full rounded-full border-2 border-blue-400/60"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)',
-            mixBlendMode: 'screen'
-          }}
+          className="w-full h-full rounded-full border-2 border-slate-900/40 bg-slate-900/5"
         />
       </div>
     </>

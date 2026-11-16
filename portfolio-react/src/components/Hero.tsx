@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Download } from 'lucide-react';
 import { scrollToHash } from '../hooks/useLenis';
 import { useContactModal } from '../store/useContactModalStore';
 
@@ -52,15 +52,15 @@ export default function Hero() {
               className="flex flex-wrap items-center gap-4 mb-8 sm:mb-12"
             >
               <a
-                href="#projects"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToHash('#projects');
-                }}
-                className="bg-slateTeal hover:bg-slateTeal-dark text-white px-8 py-3.5 rounded-full text-sm font-semibold transition-all shadow-sm hover:scale-[1.02]"
+                href="/CVNew.pdf"
+                download="Abenezer_Aschalew_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-slateTeal hover:bg-slateTeal-dark text-white px-8 py-3.5 rounded-full text-sm font-semibold transition-all shadow-sm hover:scale-[1.02] inline-flex items-center gap-2.5 cursor-pointer"
                 data-magnetic
               >
-                Get a project
+                <Download size={17} className="stroke-[2.2]" />
+                <span>Download CV</span>
               </a>
 
               <button
